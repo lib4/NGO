@@ -9,13 +9,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -36,48 +36,24 @@ import com.lib4.ngo.appbase.fragments.HomeFragment;
 
 public class LauncherActivity extends BaseActivity {
 
-	private GestureDetector gestureDetector;
-    View.OnTouchListener gestureListener;
-    
-    
-    private static final int SWIPE_MIN_DISTANCE = 120;
-    private static final int SWIPE_MAX_OFF_PATH = 250;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+	Animation animationSlideInLeft, animationSlideOutLeft;
 
+	FrameLayout mFrameLayout;
+	LinearLayout sidebar;
 
-    Animation animationSlideInLeft, animationSlideOutLeft;
-    
-    
-    FrameLayout mFrameLayout;
-    LinearLayout sidebar;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		mFrameLayout = (FrameLayout) findViewById(R.id.parenview);
 
-		gestureDetector = new GestureDetector(this, new CustomGestureDetector());
-		gestureListener = new View.OnTouchListener() {
-		    public boolean onTouch(View v, MotionEvent event) {
+		sidebar = (LinearLayout) findViewById(R.id.sidebar);
 
-
-			return gestureDetector.onTouchEvent(event);
-		    }
-		};
-
-		
-		mFrameLayout	=	(FrameLayout) findViewById(R.id.parenview);
-		
-		mFrameLayout.setOnTouchListener(gestureListener);
-		 
-		
-		sidebar	=	(LinearLayout) findViewById(R.id.sidebar);
-		
 		InitializeAnimation(this);
-		
+
 		loadHomeFragment();
-		//dumpdataandget();
+
 	}
 
 	@Override
@@ -106,100 +82,93 @@ public class LauncherActivity extends BaseActivity {
 		fragmentTransaction.commit();
 
 	}
-	
-	
+
 	/**
 	 * Insert and fetch the Comments from local data storage
 	 */
-	
-	private void dumpdataandget(){
-		DBManager appDbManager	=	new DBManager(this);
+
+	private void dumpdataandget() {
+		DBManager appDbManager = new DBManager(this);
 		appDbManager.open();
 		appDbManager.insertComments();
 		appDbManager.fetchComments().close();
 		appDbManager.close();
 	}
-	
-	
+
+	public void sidebarToggle() {
+		if (sidebar.getVisibility() == View.VISIBLE) {
+			hideSidebar();
+		} else {
+			showSidebar();
+		}
+	}
+
 	/**
 	 * 
-	 * Animation Sidebar 
+	 * Animation Sidebar
 	 */
-	
-	 public void showSidebar(){
-		 
-		 sidebar.startAnimation(animationSlideInLeft);
-	 }
-	 
-	 public void hideSidebar(){
-		 
-		 sidebar.startAnimation(animationSlideOutLeft);
-	 }
-	 
 
+	public void showSidebar() {
 
-	    private void InitializeAnimation(Context context){
+		sidebar.startAnimation(animationSlideInLeft);
+	}
+
+	public void hideSidebar() {
+
+		sidebar.startAnimation(animationSlideOutLeft);
+	}
+
+	private void InitializeAnimation(Context context) {
 		animationSlideInLeft = AnimationUtils.loadAnimation(context,
-			R.anim.left_right);
+				R.anim.left_right);
 		animationSlideOutLeft = AnimationUtils.loadAnimation(context,
-			R.anim.right_left);
+				R.anim.right_left);
 		animationSlideInLeft.setDuration(1000);
 		animationSlideOutLeft.setDuration(1000);
 		animationSlideOutLeft.setFillAfter(true);
 
+		animationSlideInLeft.setAnimationListener(new AnimationListener() {
 
-	    }
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
 
-	
-	/**
-     * 
-     * 
-     * @author Anas Abubacker
-     *         Right Left Gesture Detection
-     * 
-     */
-    class CustomGestureDetector extends SimpleOnGestureListener {
-	@Override
-	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-		float velocityY) {
-	    try {
+			}
 
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
 
-		if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
-		    return false;
-		// right to left swipe
-		if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
-			&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-		    Toast.makeText(LauncherActivity.this, "Left Swipe",
-			    Toast.LENGTH_SHORT).show();
-		    	hideSidebar();
-		    
-		} else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
-			&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-		    Toast.makeText(LauncherActivity.this, "Right Swipe",
-			    Toast.LENGTH_SHORT).show();
-		    sidebar.setVisibility(View.VISIBLE);
-		    showSidebar();
-		}
-	    } catch (Exception e) {
-		// nothing
-	    }
-	    return false;
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				sidebar.setVisibility(View.VISIBLE);
+			}
+		});
+
+		animationSlideOutLeft.setAnimationListener(new AnimationListener() {
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				sidebar.setVisibility(View.GONE);
+			}
+		});
+
 	}
-
-
-	@Override
-	public boolean onDown(MotionEvent event) {
-
-
-	    return true;
-	}
-	@Override
-	public boolean onDoubleTap(MotionEvent e){
-		Log.e("Double tap","Double tap");
-		return true;
-	}
-
-    }
 
 }

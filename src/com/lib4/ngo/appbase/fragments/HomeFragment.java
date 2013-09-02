@@ -6,7 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 
 import com.lib4.ngo.R;
+import com.lib4.ngo.appbase.activities.LauncherActivity;
 
 /**
  * 
@@ -23,6 +27,8 @@ import com.lib4.ngo.R;
 public class HomeFragment extends BaseFragment {
 
 	
+	private GestureDetector gestureDetector;
+    View.OnTouchListener gestureListener;
 	private LinearLayout linearLayout;
 	
 	 /**
@@ -70,10 +76,28 @@ public class HomeFragment extends BaseFragment {
 	 * if required.
 	 */
 	private void init() {
+		
+		
 
 		mPager = (ViewPager) linearLayout.findViewById(R.id.home_viewpager);
-		 mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
+		mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
 	    mPager.setAdapter(mPagerAdapter);
+	    
+	    
+	    gestureDetector = new GestureDetector(getActivity(), new CustomGestureDetector());
+		gestureListener = new View.OnTouchListener() {
+		    public boolean onTouch(View v, MotionEvent event) {
+
+
+			return gestureDetector.onTouchEvent(event);
+		    }
+		};
+
+		
+
+		
+		mPager.setOnTouchListener(gestureListener);
+	    
 
 	}
 
@@ -134,6 +158,32 @@ public class HomeFragment extends BaseFragment {
         public int getCount() {
             return NUM_PAGES;
         }
+    }
+    
+    
+	
+	/**
+     * 
+     * 
+     * @author Anas Abubacker
+     *         Right Left Gesture Detection
+     * 
+     */
+    class CustomGestureDetector extends SimpleOnGestureListener {
+
+
+	@Override
+	public boolean onDown(MotionEvent event) {
+
+
+	    return true;
+	}
+	@Override
+	public boolean onDoubleTap(MotionEvent e){
+		((LauncherActivity)getActivity()).sidebarToggle();
+		return true;
+	}
+
     }
 
 }

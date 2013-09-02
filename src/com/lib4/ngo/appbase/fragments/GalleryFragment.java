@@ -5,8 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+
 
 import com.lib4.ngo.R;
 import com.lib4.ngo.appbase.connection.Request;
@@ -60,7 +60,7 @@ public class GalleryFragment extends BaseFragment{
 		//textViewServerResponse	=	(TextView) getActivity().findViewById(R.id.txtview_fetching);
 		
 		//Sample Http request
-		doReqHit();
+		//doReqHit();
 		
 	}
 	

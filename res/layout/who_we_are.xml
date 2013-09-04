@@ -1,8 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lib4.ngo.appbase.util.screenindicator.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:layout_height="match_parent" >
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="A non-governmental organization (NGO) is basically a legally constituted organization which is operated by legal persons who act independently from any government. In those cases where the NGOs are funded partially or completely by governments, the NGO barred the government representatives from any membership in the organization in order to sustain its non-governmental status. The term is used for those organizations which have wider social target with political aspects. However, any NGO cannot be blatantly political organizations. The term “non-governmental organization” has no agreed legal definition and these are termed as “civil society organizations” in many jurisdictions. 
+
+NGO Across the world, the number of internationally operating NGOs is around 40,000. "
+            android:textColor="#928F8F"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/image30" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="The number of national NGO in countries is even higher with around 1-2 million NGOs in India and 277,000 NGOs in Russia. The remodelling processes of the welfare state have led to the rapid development of the non-governmental sector in western countries. With increasing globalization, the intensity of such processes has increased further. In the 20th century, the Globalization makes the people understand the importance of NGOs. 
+
+There are many problems which could not be solved effectively within a country. The international bodies at a global level including international organizations like World Trade Organization were considered to be too centred to favour the interests of capitalist firms. The growth and rise of NGO is seen as an attempt to offset this trend, where NGO emphasize the core issue related to human cause like sustainable development, developmental aid and other humanitarian issues. One such remarkable example of organization for raising the cause of people is World Social Forum. This organisation is an opponent convention to the World Economic Forum. In some cases, it represents the popular movements of the poor and other ways, it is regarded as an aristocratic form of politics.
+        "
+            android:textColor="#928F8F"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/image30" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="The number of national NGO in countries is even higher with around 1-2 million NGOs in India and 277,000 NGOs in Russia. The remodelling processes of the welfare state have led to the rapid development of the non-governmental sector in western countries. With increasing globalization, the intensity of such processes has increased further. In the 20th century, the Globalization makes the people understand the importance of NGOs. 
+
+There are many problems which could not be solved effectively within a country. The international bodies at a global level including international organizations like World Trade Organization were considered to be too centred to favour the interests of capitalist firms. The growth and rise of NGO is seen as an attempt to offset this trend, where NGO emphasize the core issue related to human cause like sustainable development, developmental aid and other humanitarian issues. One such remarkable example of organization for raising the cause of people is World Social Forum. This organisation is an opponent convention to the World Economic Forum. In some cases, it represents the popular movements of the poor and other ways, it is regarded as an aristocratic form of politics.
+        "
+            android:textColor="#928F8F"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+</com.lib4.ngo.appbase.util.screenindicator.CustomScrollView>

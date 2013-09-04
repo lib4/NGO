@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
@@ -15,9 +17,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.lib4.ngo.R;
 import com.lib4.ngo.appbase.activities.LauncherActivity;
+import com.lib4.ngo.appbase.util.screenindicator.IndicatorView;
 
 /**
  * 
@@ -29,12 +33,20 @@ public class HomeFragment extends BaseFragment {
 	
 	private GestureDetector gestureDetector;
     View.OnTouchListener gestureListener;
-	private LinearLayout linearLayout;
+	private RelativeLayout linearLayout;
+	
+	
+	IndicatorView mIndicatorView;
+
+	LinearLayout contentpane;
+
+	private int TOTAL_NUM_SCREENS = 6;
+	private int CURRENT_SCREEN = 1;
 	
 	 /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 6;
     
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -60,15 +72,16 @@ public class HomeFragment extends BaseFragment {
 			// the view hierarchy; it would just never be used.
 			return null;
 		}
-
+		
 		// Inflate the layout for this fragment
-		return (linearLayout = (LinearLayout) inflater.inflate(R.layout.home, container, false));
+		return (linearLayout = (RelativeLayout) inflater.inflate(R.layout.home, container, false));
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
 		init();
+		((LauncherActivity)getActivity()).setItemSelected(0);
 	}
 
 	/**
@@ -97,8 +110,39 @@ public class HomeFragment extends BaseFragment {
 
 		
 		mPager.setOnTouchListener(gestureListener);
+		mIndicatorView	=	(IndicatorView) linearLayout.findViewById(R.id.indicator);
+		mIndicatorView.setContext(getActivity());
+		mIndicatorView.setDrawables(R.drawable.tutorial_number_active,
+				R.drawable.tutorial_bullets_bg,
+				R.drawable.tutorial_number_inactive);
+		CURRENT_SCREEN = 1;
+		mIndicatorView.setNumberofScreens(TOTAL_NUM_SCREENS);
+		mIndicatorView.switchToScreen(CURRENT_SCREEN, CURRENT_SCREEN);
+		
 	    
-
+		mPager.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				Log.i("Arg0 ",""+ arg0);
+				mIndicatorView.switchToScreen(CURRENT_SCREEN, arg0+1);
+				CURRENT_SCREEN	=	arg0+1;
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+				
+			}
+		});
 	}
 
 	/**
@@ -115,6 +159,8 @@ public class HomeFragment extends BaseFragment {
 //			loadSecondFragment();
 		}
 	};
+	
+
 
 	/**
 	 * Load second fragment
@@ -151,7 +197,11 @@ public class HomeFragment extends BaseFragment {
 
         @Override
         public Fragment getItem(int position) {
-            return new GalleryFragment();
+        	Bundle mBundle	=	new Bundle();
+        	mBundle.putInt("position", position);
+        	ImageFragment mFragment	=	new ImageFragment();
+        	mFragment.setArguments(mBundle);
+            return  mFragment;
         }
 
         @Override

@@ -1,8 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lib4.ngo.appbase.util.screenindicator.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:layout_height="match_parent" >
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Each member of the Open Door Foundation is committed to enriching the quality of life for children residing in orphanages and care-homes. This commitment manifests itself in many ways - providing academic support with daily homework, ensuring proper healthcare and medical attention, providing meaningful and creative extra-curricular activities for the children, or fundraising for key essentials like food, clothing and shelter. 
+
+
+Each institution supported by the Open Door Foundation is overseen by a dedicated co-ordinator who works with the orphanage directors to identify the needs of the children and the institution. The co-ordinator then connects with volunteers in the area to match the requirements. Since our foundation in March 2011 (formerly as Orphanage Outreach Bangalore), we have worked with 7 orphanages in Bengaluru, and provided care to over 600 underprivileged children.
+
+
+Our programmes are envisioned and executed by our volunteers – individuals from different walks of life, with varied skills sets who come together to enhance the experience of childhood for the children. Programmes are divided into four categories – Academics, Extra-Curricular Activities, Healthcare and Administrative Support.  
+
+At The Open Door Foundation approximately 90% of the funds we raise directly benefit the kids (The remaining 10% is spent on miscellaneous expenditure towards the up-keeping of the organisation) since all of the current working members are volunteers.
+            "
+            android:textColor="#928F8F"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/whatwedo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Each member of the Open Door Foundation is committed to enriching the quality of life for children residing in orphanages and care-homes. This commitment manifests itself in many ways - providing academic support with daily homework, ensuring proper healthcare and medical attention, providing meaningful and creative extra-curricular activities for the children, or fundraising for key essentials like food, clothing and shelter. 
+
+
+Each institution supported by the Open Door Foundation is overseen by a dedicated co-ordinator who works with the orphanage directors to identify the needs of the children and the institution. The co-ordinator then connects with volunteers in the area to match the requirements. Since our foundation in March 2011 (formerly as Orphanage Outreach Bangalore), we have worked with 7 orphanages in Bengaluru, and provided care to over 600 underprivileged children.
+
+
+Our programmes are envisioned and executed by our volunteers – individuals from different walks of life, with varied skills sets who come together to enhance the experience of childhood for the children. Programmes are divided into four categories – Academics, Extra-Curricular Activities, Healthcare and Administrative Support.  
+
+At The Open Door Foundation approximately 90% of the funds we raise directly benefit the kids (The remaining 10% is spent on miscellaneous expenditure towards the up-keeping of the organisation) since all of the current working members are volunteers.
+            
+        "
+            android:textColor="#928F8F"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/whatwedo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="The number of national NGO in countries is even higher with around 1-2 million NGOs in India and 277,000 NGOs in Russia. The remodelling processes of the welfare state have led to the rapid development of the non-governmental sector in western countries. With increasing globalization, the intensity of such processes has increased further. In the 20th century, the Globalization makes the people understand the importance of NGOs. 
+
+There are many problems which could not be solved effectively within a country. The international bodies at a global level including international organizations like World Trade Organization were considered to be too centred to favour the interests of capitalist firms. The growth and rise of NGO is seen as an attempt to offset this trend, where NGO emphasize the core issue related to human cause like sustainable development, developmental aid and other humanitarian issues. One such remarkable example of organization for raising the cause of people is World Social Forum. This organisation is an opponent convention to the World Economic Forum. In some cases, it represents the popular movements of the poor and other ways, it is regarded as an aristocratic form of politics.
+        "
+            android:textColor="#928F8F"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+</com.lib4.ngo.appbase.util.screenindicator.CustomScrollView>

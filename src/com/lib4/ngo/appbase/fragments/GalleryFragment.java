@@ -119,6 +119,6 @@ public class GalleryFragment extends BaseFragment{
 	@Override
 	public void onPause(){
 		super.onPause();
-		queue.cancelAll("DUMMYTAG");
+		
 	}
 }

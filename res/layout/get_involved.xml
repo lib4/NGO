@@ -1,8 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lib4.ngo.appbase.util.screenindicator.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:layout_height="match_parent" >
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+       
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/image001" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Each member of the Open Door Foundation is committed to enriching the quality of life for children residing in orphanages and care-homes. This commitment manifests itself in many ways - providing academic support with daily homework, ensuring proper healthcare and medical attention, providing meaningful and creative extra-curricular activities for the children, or fundraising for key essentials like food, clothing and shelter. 
+
+
+Each institution supported by the Open Door Foundation is overseen by a dedicated co-ordinator who works with the orphanage directors to identify the needs of the children and the institution. The co-ordinator then connects with volunteers in the area to match the requirements. Since our foundation in March 2011 (formerly as Orphanage Outreach Bangalore), we have worked with 7 orphanages in Bengaluru, and provided care to over 600 underprivileged children.
+
+
+Our programmes are envisioned and executed by our volunteers – individuals from different walks of life, with varied skills sets who come together to enhance the experience of childhood for the children. Programmes are divided into four categories – Academics, Extra-Curricular Activities, Healthcare and Administrative Support.  
+
+At The Open Door Foundation approximately 90% of the funds we raise directly benefit the kids (The remaining 10% is spent on miscellaneous expenditure towards the up-keeping of the organisation) since all of the current working members are volunteers.
+            
+        "
+            android:textColor="#928F8F"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/whatwedo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="At the Open Door Foundation, we aim to provide individuals with avenues through which they can best interact with and make a difference in the lives of children in orphanages and care homes. This could be in the form of:
+
+
+•Volunteering with the various programmes currently executed in the various orphanages.
+•Financial support towards essentials like food, clothing and shelter, funding for tuition and computer skills, and for equipment for extracurricular activities.
+•Making available expertise and skills within your network of contacts to improve the quality of life for the children.
+
+
+Whatever extent of participation you wish to have, the Open Door Foundation will find the right opportunity for you to get involved and make a difference!
+      "
+            android:textColor="#928F8F"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+</com.lib4.ngo.appbase.util.screenindicator.CustomScrollView>
